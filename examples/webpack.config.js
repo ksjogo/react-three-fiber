@@ -9,7 +9,7 @@ const createAlias = (name, fallback) =>
 module.exports = mode => {
   return {
     mode,
-    entry: 'index.js',
+    entry: 'index.tsx',
     output: { filename: 'bundle.js', path: path.resolve('./dist') },
     module: {
       rules: [
@@ -51,7 +51,7 @@ module.exports = mode => {
       modules: [path.resolve('./'), 'node_modules'],
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       alias: {
-        'react-three-fiber': path.resolve(`./../index.js`),
+        'react-three-fiber': path.resolve(`./../index.ts`),
         react: path.resolve('node_modules/react'),
         'react-dom': path.resolve('node_modules/react-dom'),
         'prop-types': path.resolve('node_modules/prop-types'),

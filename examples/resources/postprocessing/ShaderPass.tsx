@@ -1,10 +1,10 @@
 import { Mesh, OrthographicCamera, PlaneBufferGeometry, Scene, ShaderMaterial, UniformsUtils } from 'three'
-import { Pass } from './Pass.js'
+import { Pass } from './Pass'
 /**
  * @author alteredq / http://alteredqualia.com/
  */
 
-var ShaderPass = function(shader, textureID) {
+var ShaderPass = function (shader, textureID) {
   Pass.call(this)
 
   this.textureID = textureID !== undefined ? textureID : 'tDiffuse'
@@ -35,7 +35,7 @@ var ShaderPass = function(shader, textureID) {
 ShaderPass.prototype = Object.assign(Object.create(Pass.prototype), {
   constructor: ShaderPass,
 
-  render: function(renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
+  render: function (renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
     if (this.uniforms[this.textureID]) {
       this.uniforms[this.textureID].value = readBuffer.texture
     }

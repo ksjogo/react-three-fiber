@@ -2,18 +2,17 @@ import * as THREE from 'three'
 import React, { useState, useRef, useContext, useEffect, useCallback, useMemo } from 'react'
 import { apply as applySpring, useSpring, animated as anim, interpolate } from 'react-spring/three'
 import { apply as applyThree, Canvas, useRender, useThree } from 'react-three-fiber'
-import data from './../resources/data'
+import data from '../resources/data'
 
 // Import and register postprocessing classes as three-native-elements
-import { EffectComposer } from './../resources/postprocessing/EffectComposer'
-import { RenderPass } from './../resources/postprocessing/RenderPass'
-import { GlitchPass } from './../resources/postprocessing/GlitchPass'
-
+import { EffectComposer } from '../resources/postprocessing/EffectComposer'
+import { RenderPass } from '../resources/postprocessing/RenderPass'
+import { GlitchPass } from '../resources/postprocessing/GlitchPass'
 applySpring({ EffectComposer, RenderPass, GlitchPass })
 applyThree({ EffectComposer, RenderPass, GlitchPass })
 
 /** This component loads an image and projects it onto a plane */
-function Image({ url, opacity, scale, ...props }) {
+function Image ({ url, opacity, scale, ...props }) {
   const texture = useMemo(() => new THREE.TextureLoader().load(url), [url])
   const [hovered, setHover] = useState(false)
   const hover = useCallback(() => setHover(true), [])
@@ -34,7 +33,7 @@ function Image({ url, opacity, scale, ...props }) {
 }
 
 /** This renders text via canvas and projects it as a sprite */
-function Text({ children, position, opacity, color = 'white', fontSize = 410 }) {
+function Text ({ children, position, opacity, color = 'white', fontSize = 410 }) {
   const {
     camera,
     size: { width, height },
@@ -63,7 +62,7 @@ function Text({ children, position, opacity, color = 'white', fontSize = 410 }) 
 }
 
 /** This component creates a fullscreen colored plane */
-function Background({ color }) {
+function Background ({ color }) {
   const { viewport } = useThree()
   const { width, height } = viewport()
   return (
@@ -75,7 +74,7 @@ function Background({ color }) {
 }
 
 /** This component rotates a bunch of stars */
-function Stars({ position }) {
+function Stars ({ position }) {
   let group = useRef()
   let theta = 0
   useRender(() => {
@@ -117,7 +116,7 @@ const Effects = React.memo(({ factor }) => {
 })
 
 /** This component creates a bunch of parallaxed images */
-function Images({ top, mouse, scrollMax }) {
+function Images ({ top, mouse, scrollMax }) {
   return data.map(([url, x, y, factor, z, scale], index) => (
     <Image
       key={index}
@@ -134,7 +133,7 @@ function Images({ top, mouse, scrollMax }) {
 }
 
 /** This component maintains the scene */
-function Scene({ top, mouse }) {
+function Scene ({ top, mouse }) {
   const { size } = useThree()
   const scrollMax = size.height * 4.5
   return (
@@ -160,7 +159,7 @@ function Scene({ top, mouse }) {
 }
 
 /** Main component */
-export default function Main() {
+export default function Main () {
   // This tiny spring right here controlls all(!) the animations, one for scroll, the other for mouse movement ...
   const [{ top, mouse }, set] = useSpring(() => ({ top: 0, mouse: [0, 0] }))
   const onMouseMove = useCallback(

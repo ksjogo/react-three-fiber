@@ -1,6 +1,6 @@
-import { ClearMaskPass, MaskPass } from './MaskPass.js'
-import { ShaderPass } from './ShaderPass.js'
-import { CopyShader } from '../shaders/CopyShader.js'
+import { ClearMaskPass, MaskPass } from './MaskPass'
+import { ShaderPass } from './ShaderPass'
+import { CopyShader } from '../shaders/CopyShader'
 import { LinearFilter, RGBAFormat, Vector2, WebGLRenderTarget } from 'three'
 /**
  * @author alteredq / http://alteredqualia.com/

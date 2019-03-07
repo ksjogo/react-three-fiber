@@ -11,8 +11,8 @@ import {
   UniformsUtils,
   WebGLRenderTarget,
 } from 'three'
-import { AfterimageShader } from '../shaders/AfterimageShader.js'
-import { Pass } from './Pass.js'
+import { AfterimageShader } from '../shaders/AfterimageShader'
+import { Pass } from './Pass'
 /**
  * @author HypnosNova / https://www.threejs.org.cn/gallery/
  */

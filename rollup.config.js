@@ -46,4 +46,4 @@ function createConfig(entry, out) {
   ]
 }
 
-export default [...createConfig('index', 'index')]
+export default [...createConfig('index.ts', 'index')]
